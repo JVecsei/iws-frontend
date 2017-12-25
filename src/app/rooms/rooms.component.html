@@ -1,0 +1,27 @@
+<div class="float-left">
+  <form class="form" (submit)="createRoom(newRoom)">
+    <div class="form-group">
+      <label for="building">Gebäude</label>
+      <input id="building" type="text" [(ngModel)]="newRoom.building" name="name" class="form-control" placeholder="Gebäude...">
+    </div>
+    <div class="form-group">
+      <label for="number">Raumnummer</label>
+      <input id="number" type="number" [(ngModel)]="newRoom.number" name="name" class="form-control" placeholder="Raumnummer...">
+    </div>
+
+    <button type="button" class="btn btn-success" [disabled]="!newRoom.building || !newRoom.number">Neuen Raum anlegen</button>
+  </form>
+</div>
+<table class="table">
+  <tr>
+    <th>Id</th>
+    <th>Gebäude</th>
+    <th>Raumnummer</th>
+  </tr>
+  <tr *ngFor="let room of rooms">
+    <td>{{room.id}}</td>
+    <td>{{room.building}}</td>
+    <td>{{room.number}}</td>
+  </tr>
+</table>
+

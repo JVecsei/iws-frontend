@@ -1,0 +1,20 @@
+<div class="float-left">
+  <form class="form" (submit)="createStudent(newStudent)">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" type="text" [(ngModel)]="newStudent.name" name="name" class="form-control" placeholder="Name...">
+    </div>
+    <button type="button" class="btn btn-success" [disabled]="!newStudent.name">Neuen Studenten anlegen</button>
+  </form>
+</div>
+<table class="table">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+  </tr>
+  <tr *ngFor="let student of students">
+    <td>{{student.id}}</td>
+    <td>{{student.name}}</td>
+  </tr>
+</table>
+

@@ -1,0 +1,31 @@
+<div class="container">
+  <header class="header clearfix">
+    <nav>
+      <ul class="nav nav-pills float-right">
+        <li class="nav-item">
+          <a routerLink="/home" routerLinkActive="active" class="nav-link">Startseite <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/students" routerLinkActive="active" class="nav-link">Studenten</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/rooms" routerLinkActive="active" class="nav-link">Räume</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/lectures" routerLinkActive="active" class="nav-link">Vorlesungen</a>
+        </li>
+      </ul>
+    </nav>
+    <h3 class="text-muted">Microservices &amp; Docker</h3>
+  </header>
+
+  <main role="main">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="footer">
+
+  </footer>
+
+</div> <!-- /container -->
+

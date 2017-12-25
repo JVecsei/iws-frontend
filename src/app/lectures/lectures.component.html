@@ -1,0 +1,28 @@
+<div class="float-left">
+  <form class="form" (submit)="createLecture(newLecture)">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" type="text" [(ngModel)]="newLecture.name" name="name" class="form-control" placeholder="Name...">
+    </div>
+    <div class="form-group">
+      <label for="abbreviation">Raumnummer</label>
+      <input id="abbreviation" type="text" [(ngModel)]="newLecture.abbreviation" name="name" class="form-control" placeholder="Abkürzung...">
+    </div>
+
+    <button type="button" class="btn btn-success" [disabled]="!newLecture.name || !newLecture.abbreviation">Neuen Vorlesung anlegen</button>
+  </form>
+</div>
+<table class="table">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Abkürzung</th>
+    <th>Raum</th>
+  </tr>
+  <tr *ngFor="let lecture of lectures">
+    <td>{{lecture.id}}</td>
+    <td>{{lecture.name}}</td>
+    <td>{{lecture.abbreviation}}</td>
+    <td *ngIf="lecture.room">{{lecture.room.building}}{{lecture.room.number}}</td>
+  </tr>
+</table>
