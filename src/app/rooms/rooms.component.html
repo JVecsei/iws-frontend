@@ -9,7 +9,7 @@
       <input id="number" type="number" [(ngModel)]="newRoom.number" name="name" class="form-control" placeholder="Raumnummer...">
     </div>
 
-    <button type="button" class="btn btn-success" [disabled]="!newRoom.building || !newRoom.number">Neuen Raum anlegen</button>
+    <button type="submit" class="btn btn-success" [disabled]="!newRoom.building || !newRoom.number">Neuen Raum anlegen</button>
   </form>
 </div>
 <table class="table">

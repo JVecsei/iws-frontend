@@ -9,7 +9,7 @@
       <input id="abbreviation" type="text" [(ngModel)]="newLecture.abbreviation" name="name" class="form-control" placeholder="Abkürzung...">
     </div>
 
-    <button type="button" class="btn btn-success" [disabled]="!newLecture.name || !newLecture.abbreviation">Neuen Vorlesung anlegen</button>
+    <button type="submit" class="btn btn-success" [disabled]="!newLecture.name || !newLecture.abbreviation">Neuen Vorlesung anlegen</button>
   </form>
 </div>
 <table class="table">
