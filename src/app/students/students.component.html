@@ -4,6 +4,12 @@
       <label for="name">Name</label>
       <input id="name" type="text" [(ngModel)]="newStudent.name" name="name" class="form-control" placeholder="Name...">
     </div>
+    <div class="form-group">
+      <label for="room">Vorlesungen</label>
+      <select class="form-control" [(ngModel)]="newStudent.lectures" name="room" id="room" multiple>
+        <option *ngFor="let l of lectures" [ngValue]="l">{{l.abbreviation}} - {{l.name}}</option>
+      </select>
+    </div>
     <button type="submit" class="btn btn-success" [disabled]="!newStudent.name">Neuen Studenten anlegen</button>
   </form>
 </div>

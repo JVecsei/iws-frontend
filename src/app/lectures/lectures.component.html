@@ -5,11 +5,16 @@
       <input id="name" type="text" [(ngModel)]="newLecture.name" name="name" class="form-control" placeholder="Name...">
     </div>
     <div class="form-group">
-      <label for="abbreviation">Raumnummer</label>
+      <label for="abbreviation">Abkürzung</label>
       <input id="abbreviation" type="text" [(ngModel)]="newLecture.abbreviation" name="name" class="form-control" placeholder="Abkürzung...">
     </div>
-
-    <button type="submit" class="btn btn-success" [disabled]="!newLecture.name || !newLecture.abbreviation">Neuen Vorlesung anlegen</button>
+    <div class="form-group">
+      <label for="room">Raum</label>
+      <select class="form-control" [(ngModel)]="newLecture.room" name="room" id="room">
+        <option *ngFor="let r of rooms" [ngValue]="r">{{r.building}}{{r.number}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!newLecture.name || !newLecture.abbreviation || !newLecture.room">Neue Vorlesung anlegen</button>
   </form>
 </div>
 <table class="table">
