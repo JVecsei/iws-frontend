@@ -13,8 +13,8 @@ export class RoomService {
     return this.http.get<Room[]>(this.settingsService.roomsUrl);
   }
 
-  public save(lecture: Lecture) {
-    return this.http.post(this.settingsService.roomsUrl, lecture);
+  public save(room: Room) {
+    return this.http.post(this.settingsService.roomsUrl, room);
   }
 
 }

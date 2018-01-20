@@ -1,27 +1,25 @@
-<div class="float-left">
-  <form class="form" (submit)="createRoom(newRoom)">
+<div class="row">
+  <form class="form col-lg-10" (submit)="createRoom(newRoom)">
+    <p>
+      <ngb-alert [dismissible]="false" type="success" *ngIf="savedSuccessfully">
+        <strong>Gespeichert!</strong> Neuer Raum wurde gespeichert.
+      </ngb-alert>
+    </p>
     <div class="form-group">
-      <label for="building">Gebäude</label>
-      <input id="building" type="text" [(ngModel)]="newRoom.building" name="name" class="form-control" placeholder="Gebäude...">
+      <label for="name">Raumnummer</label>
+      <input id="name" type="text" [(ngModel)]="newRoom.name" name="name" class="form-control" placeholder="Raumname...">
     </div>
-    <div class="form-group">
-      <label for="number">Raumnummer</label>
-      <input id="number" type="number" [(ngModel)]="newRoom.number" name="name" class="form-control" placeholder="Raumnummer...">
-    </div>
-
-    <button type="submit" class="btn btn-success" [disabled]="!newRoom.building || !newRoom.number">Neuen Raum anlegen</button>
+    <button type="submit" class="btn btn-success" [disabled]="!newRoom.name">Neuen Raum anlegen</button>
   </form>
 </div>
 <table class="table">
   <tr>
     <th>Id</th>
-    <th>Gebäude</th>
-    <th>Raumnummer</th>
+    <th>Raumname</th>
   </tr>
   <tr *ngFor="let room of rooms">
     <td>{{room.id}}</td>
-    <td>{{room.building}}</td>
-    <td>{{room.number}}</td>
+    <td>{{room.name}}</td>
   </tr>
 </table>
 

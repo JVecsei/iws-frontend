@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Student} from "../students/student";
 import {Room} from "./room";
+import {RoomService} from "./room.service";
 
 @Component({
   selector: 'app-rooms',
@@ -11,23 +12,31 @@ export class RoomsComponent implements OnInit {
 
   public rooms: Room[];
   public newRoom: Room;
+  private savedSuccessfully: boolean;
 
-  constructor() {
+  constructor(private roomService: RoomService) {
   }
 
   ngOnInit() {
     this.newRoom = new Room();
-    this.rooms = [
-      {id: 1, building: "A", number: 211}
-    ]
+    this.savedSuccessfully = false;
+    this.reloadRooms();
+  }
+
+  private reloadRooms() {
+    this.roomService.getAll().subscribe(rooms => {
+      this.rooms = rooms;
+    });
   }
 
   public createRoom(room: Room): void {
-    if(!room.building || room.number) {
+    if (!room.name) {
       alert('Bitte alle Felder ausfüllen');
     }
-    this.newRoom.id = this.rooms[this.rooms.length-1].id + 1;
-    this.rooms.push(room);
+    this.roomService.save(room).subscribe(s => {
+      this.savedSuccessfully = true;
+      this.reloadRooms();
+    });
     this.newRoom = new Room();
   }
 

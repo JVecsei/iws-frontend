@@ -1,5 +1,10 @@
-<div class="float-left">
-  <form class="form" (submit)="createLecture(newLecture)">
+<div class="row">
+  <form class="form col-lg-10" (submit)="createLecture(newLecture)">
+    <p>
+      <ngb-alert [dismissible]="false" type="success" *ngIf="savedSuccessfully">
+        <strong>Gespeichert!</strong> Neue Vorlesung wurde gespeichert.
+      </ngb-alert>
+    </p>
     <div class="form-group">
       <label for="name">Name</label>
       <input id="name" type="text" [(ngModel)]="newLecture.name" name="name" class="form-control" placeholder="Name...">
@@ -11,7 +16,7 @@
     <div class="form-group">
       <label for="room">Raum</label>
       <select class="form-control" [(ngModel)]="newLecture.room" name="room" id="room">
-        <option *ngFor="let r of rooms" [ngValue]="r">{{r.building}}{{r.number}}</option>
+        <option *ngFor="let r of rooms" [ngValue]="r">{{r.name}}</option>
       </select>
     </div>
     <button type="submit" class="btn btn-success" [disabled]="!newLecture.name || !newLecture.abbreviation || !newLecture.room">Neue Vorlesung anlegen</button>
@@ -28,6 +33,6 @@
     <td>{{lecture.id}}</td>
     <td>{{lecture.name}}</td>
     <td>{{lecture.abbreviation}}</td>
-    <td *ngIf="lecture.room">{{lecture.room.building}}{{lecture.room.number}}</td>
+    <td *ngIf="lecture.room">{{lecture.room.name}}</td>
   </tr>
 </table>

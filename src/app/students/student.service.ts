@@ -13,7 +13,7 @@ export class StudentService {
     return this.http.get<Student[]>(this.settingsService.studentsUrl);
   }
 
-  public save(lecture: Lecture) {
-    return this.http.post(this.settingsService.studentsUrl, lecture);
+  public save(student: Student) {
+    return this.http.post(this.settingsService.studentsUrl, student);
   }
 }

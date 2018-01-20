@@ -5,4 +5,9 @@ export class Lecture {
   public name: string;
   public abbreviation: string;
   public room: Room;
+
+
+  public toString(): String {
+    return this.abbreviation;
+  }
 }
