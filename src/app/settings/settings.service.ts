@@ -19,9 +19,9 @@ export class SettingsService {
 
   public setDefaultUrls(): void {
     let baseUrl = "http://localhost:8080";
-    this.lecturesUrl = baseUrl + "/lectures";
-    this.roomsUrl = baseUrl + "/rooms";
-    this.studentsUrl = baseUrl + "/students";
+    this.lecturesUrl = baseUrl + "/lecture";
+    this.roomsUrl = baseUrl + "/room";
+    this.studentsUrl = baseUrl + "/student";
     this.persistSettings();
   }
 
