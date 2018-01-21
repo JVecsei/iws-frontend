@@ -1,13 +1,9 @@
 <div class="row">
   <form class="form col-lg-10" (submit)="createRoom(newRoom)">
-    <p>
-      <ngb-alert [dismissible]="false" type="success" *ngIf="savedSuccessfully">
-        <strong>Gespeichert!</strong> Neuer Raum wurde gespeichert.
-      </ngb-alert>
-    </p>
     <div class="form-group">
       <label for="name">Raumnummer</label>
-      <input id="name" type="text" [(ngModel)]="newRoom.name" name="name" class="form-control" placeholder="Raumname...">
+      <input id="name" type="text" [(ngModel)]="newRoom.name" name="name" class="form-control"
+             placeholder="Raumname...">
     </div>
     <button type="submit" class="btn btn-success" [disabled]="!newRoom.name">Neuen Raum anlegen</button>
   </form>
@@ -16,10 +12,12 @@
   <tr>
     <th>Id</th>
     <th>Raumname</th>
+    <th></th>
   </tr>
   <tr *ngFor="let room of rooms">
     <td>{{room.id}}</td>
     <td>{{room.name}}</td>
+    <td><a href="#" class="badge badge-danger" (click)="deleteRoom(room, $event)">Löschen</a></td>
   </tr>
 </table>
 

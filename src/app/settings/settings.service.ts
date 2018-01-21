@@ -9,7 +9,7 @@ export class SettingsService {
 
   constructor() {
     let storedSettings = localStorage.getItem('settings');
-    if(storedSettings) {
+    if (storedSettings) {
       let storedSettingsJson = JSON.parse(storedSettings);
       Object.assign(this, storedSettingsJson);
     } else {
@@ -18,16 +18,14 @@ export class SettingsService {
   }
 
   public setDefaultUrls(): void {
-    let baseUrl = "http://localhost:8080";
-    this.lecturesUrl = baseUrl + "/lecture";
-    this.roomsUrl = baseUrl + "/room";
-    this.studentsUrl = baseUrl + "/student";
+    this.lecturesUrl = "http://localhost:8070/lectures";
+    this.roomsUrl = "http://localhost:8080/rooms";
+    this.studentsUrl = "http://localhost:8090/students";
     this.persistSettings();
   }
 
   public persistSettings() {
     localStorage.setItem('settings', JSON.stringify(this));
   }
-
 
 }

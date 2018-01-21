@@ -4,6 +4,7 @@ import {Lecture} from "../lectures/lecture";
 import {Room} from "../rooms/room";
 import {StudentService} from "./student.service";
 import {LectureService} from "../lectures/lecture.service";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
   selector: 'app-students',
@@ -15,14 +16,12 @@ export class StudentsComponent implements OnInit {
   public students: Student[];
   public lectures: Lecture[];
   public newStudent: Student;
-  private savedSuccessfully: boolean;
 
-  constructor(private studentService: StudentService, private lectureService: LectureService) {
+  constructor(private studentService: StudentService, private lectureService: LectureService, private toastr: ToastsManager) {
   }
 
   ngOnInit() {
     this.newStudent = new Student();
-    this.savedSuccessfully = false;
     this.reloadStudents();
     this.reloadLectures();
   }
@@ -46,7 +45,7 @@ export class StudentsComponent implements OnInit {
     this.studentService.save(student).subscribe(v => {
       this.reloadStudents();
       this.reloadLectures();
-      this.savedSuccessfully = true;
+      this.toastr.success("Erfolgreich gespeichert!");
     });
     this.newStudent = new Student();
   }
@@ -54,9 +53,19 @@ export class StudentsComponent implements OnInit {
   public getLectures(student: Student): string {
     let lecturesToString = [];
     student.lectures.forEach(lecture => {
-      lecturesToString.push(lecture.name  + " (" + lecture.abbreviation + ")");
+      lecturesToString.push(lecture.name + " (" + lecture.abbreviation + ")");
     });
     return lecturesToString.join(", ");
+  }
+
+  public deleteStudent(student: Student, event: any): void {
+    event.preventDefault();
+    this.studentService.delete(student).subscribe(v => {
+      this.reloadStudents();
+      this.toastr.success("Erfolgreich gelöscht!");
+    }, error => {
+      this.toastr.error("Konnte nicht gelöscht werden!");
+    });
   }
 
 }

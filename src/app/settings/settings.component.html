@@ -1,7 +1,7 @@
 <div class="row">
   <form class="form col-lg-10" (submit)="saveSettings(newSettings)">
     <p>
-      <ngb-alert [dismissible]="true" type="success" *ngIf="savedSuccessfully">
+      <ngb-alert [dismissible]="false" type="success" *ngIf="savedSuccessfully">
         <strong>Gespeichert!</strong> Neue Einstellungen wurden gespeichert.
       </ngb-alert>
     </p>

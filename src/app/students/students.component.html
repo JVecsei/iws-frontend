@@ -1,10 +1,5 @@
 <div class="row">
   <form class="form col-lg-10" (submit)="createStudent(newStudent)">
-    <p>
-      <ngb-alert [dismissible]="false" type="success" *ngIf="savedSuccessfully">
-        <strong>Gespeichert!</strong> Neuer Student wurde gespeichert.
-      </ngb-alert>
-    </p>
     <div class="form-group">
       <label for="name">Name</label>
       <input id="name" type="text" [(ngModel)]="newStudent.name" name="name" class="form-control" placeholder="Name...">
@@ -23,11 +18,13 @@
     <th>Id</th>
     <th>Name</th>
     <th>Vorlesungen</th>
+    <th></th>
   </tr>
   <tr *ngFor="let student of students">
     <td>{{student.id}}</td>
     <td>{{student.name}}</td>
     <td>{{getLectures(student)}}</td>
+    <td><a href="#" class="badge badge-danger" (click)="deleteStudent(student, $event)">Löschen</a></td>
   </tr>
 </table>
 

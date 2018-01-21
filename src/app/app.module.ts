@@ -16,6 +16,8 @@ import {SettingsService} from "./settings/settings.service";
 import {StudentService} from "./students/student.service";
 import {RoomService} from "./rooms/room.service";
 import {LectureService} from "./lectures/lecture.service";
+import {ToastModule} from "ng2-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import {LectureService} from "./lectures/lecture.service";
     BrowserModule,
     AppRoutingModule,
     NgbModule.forRoot(),
+    ToastModule.forRoot(),
+    BrowserAnimationsModule,
     HttpClientModule,
     FormsModule
   ],

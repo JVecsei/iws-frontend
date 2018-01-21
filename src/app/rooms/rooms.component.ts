@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Student} from "../students/student";
 import {Room} from "./room";
 import {RoomService} from "./room.service";
+import {Lecture} from "../lectures/lecture";
+import {ToastsManager} from "ng2-toastr";
 
 @Component({
   selector: 'app-rooms',
@@ -12,14 +14,12 @@ export class RoomsComponent implements OnInit {
 
   public rooms: Room[];
   public newRoom: Room;
-  private savedSuccessfully: boolean;
 
-  constructor(private roomService: RoomService) {
+  constructor(private roomService: RoomService, private toastr: ToastsManager) {
   }
 
   ngOnInit() {
     this.newRoom = new Room();
-    this.savedSuccessfully = false;
     this.reloadRooms();
   }
 
@@ -34,10 +34,20 @@ export class RoomsComponent implements OnInit {
       alert('Bitte alle Felder ausfüllen');
     }
     this.roomService.save(room).subscribe(s => {
-      this.savedSuccessfully = true;
       this.reloadRooms();
+      this.toastr.success("Erfolgreich gespeichert!");
     });
     this.newRoom = new Room();
+  }
+
+  public deleteRoom(room: Room, event: any): void {
+    event.preventDefault();
+    this.roomService.delete(room).subscribe(v => {
+      this.reloadRooms();
+      this.toastr.success("Erfolgreich gelöscht!");
+    }, error => {
+      this.toastr.error("Konnte nicht gelöscht werden!");
+    });
   }
 
 }
